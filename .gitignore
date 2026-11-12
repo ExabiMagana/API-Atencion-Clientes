@@ -1,0 +1,21 @@
+# Archivos generados
+**/bin/
+**/obj/
+
+# Configuración local de Visual Studio
+.vs/
+*.user
+*.suo
+
+# Configuración privada
+**/appsettings.Local.json
+**/appsettings.*.Local.json
+
+# Resultados de pruebas y registros
+TestResults/
+*.log
+
+# Archivos locales de SQL Server
+*.mdf
+*.ldf
+*.bak

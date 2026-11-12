@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/Elementos de la solución/">
+    <File Path=".gitignore" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="AtencionClientes.PruebasSignalR/AtencionClientes.PruebasSignalR.csproj" Id="3e6a5771-acec-45c5-9d50-6b965af7719b" />
+  <Project Path="AtencionClientesAPI/AtencionClientesAPI.csproj" />
+</Solution>

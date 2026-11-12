@@ -1,0 +1,192 @@
+@baseUrl = https://localhost:7222
+
+@anaId = 1
+@brunoId = 2
+@carlaId = 3
+
+@empleadoId = 1
+
+@turnoA = 1
+@turnoB = 2
+@turnoC = 3
+
+### Registrar a Cliente 1
+POST {{baseUrl}}/api/clientes
+Content-Type: application/json
+
+{
+  "nombre": "Ana López",
+  "telefono": "7000-1001",
+  "correo": "ana@gmail.com"
+}
+
+### Registrar a Cliente 2
+POST {{baseUrl}}/api/clientes
+Content-Type: application/json
+
+{
+  "nombre": "Bruno Pérez",
+  "telefono": "7000-1002",
+  "correo": "bruno@gmail.com"
+}
+
+### 06. Registrar a Cliente 3
+POST {{baseUrl}}/api/clientes
+Content-Type: application/json
+
+{
+  "nombre": "Carla Gómez",
+  "telefono": "7000-1003",
+  "correo": "carla@gmail.com"
+}
+
+### Consultar todos los clientes
+GET {{baseUrl}}/api/clientes
+
+### Consultar a Ana
+GET {{baseUrl}}/api/clientes/{{anaId}}
+
+### Actualizar a Ana
+PUT {{baseUrl}}/api/clientes/{{anaId}}
+Content-Type: application/json
+
+{
+  "nombre": "Ana María López",
+  "telefono": "7000-9999",
+  "correo": "ana@example.com"
+}
+
+
+
+### Registrar empleado
+POST {{baseUrl}}/api/empleados
+Content-Type: application/json
+
+{
+  "nombre": "Carlos Hernández"
+}
+
+### Consultar empleado
+GET {{baseUrl}}/api/empleados/{{empleadoId}}
+
+### Comprobar disponibilidad
+GET {{baseUrl}}/api/empleados/disponibles
+
+### Crear turno A para Ana
+POST {{baseUrl}}/api/turnos
+Content-Type: application/json
+
+{
+  "clienteId": {{anaId}}
+}
+
+### Crear turno B para Bruno
+POST {{baseUrl}}/api/turnos
+Content-Type: application/json
+
+{
+  "clienteId": {{brunoId}}
+}
+
+### Crear turno C para Carla
+POST {{baseUrl}}/api/turnos
+Content-Type: application/json
+
+{
+  "clienteId": {{carlaId}}
+}
+
+### Consultar pendientes
+GET {{baseUrl}}/api/turnos/pendientes
+
+### Consultar turno A
+GET {{baseUrl}}/api/turnos/{{turnoA}}
+
+### Posición de Ana
+GET {{baseUrl}}/api/turnos/{{turnoA}}/posicion
+
+### Posición de Bruno
+GET {{baseUrl}}/api/turnos/{{turnoB}}/posicion
+
+### Posición de Carla
+GET {{baseUrl}}/api/turnos/{{turnoC}}/posicion
+
+
+
+### Asignar turno A a Carlos
+PUT {{baseUrl}}/api/turnos/{{turnoA}}/asignacion
+Content-Type: application/json
+
+{
+  "empleadoId": {{empleadoId}}
+}
+
+### Comprobar empleado ocupado
+GET {{baseUrl}}/api/empleados/disponibles
+
+### Comprobar posición de Ana
+GET {{baseUrl}}/api/turnos/{{turnoA}}/posicion
+
+### Comprobar posición de Bruno
+GET {{baseUrl}}/api/turnos/{{turnoB}}/posicion
+
+### Comprobar posición de Carla
+GET {{baseUrl}}/api/turnos/{{turnoC}}/posicion
+
+### Intentar asignar también el turno B a Carlos
+PUT {{baseUrl}}/api/turnos/{{turnoB}}/asignacion
+Content-Type: application/json
+
+{
+  "empleadoId": {{empleadoId}}
+}
+
+
+
+### Finalizar turno A
+POST {{baseUrl}}/api/turnos/{{turnoA}}/finalizar
+
+### Comprobar disponibilidad de Carlos
+GET {{baseUrl}}/api/empleados/disponibles
+
+### Consultar turno A finalizado
+GET {{baseUrl}}/api/turnos/{{turnoA}}
+
+### Cancelar turno B
+PATCH {{baseUrl}}/api/turnos/{{turnoB}}/estado
+Content-Type: application/json
+
+{
+  "estado": "Cancelado"
+}
+
+### Consultar posición de Bruno
+GET {{baseUrl}}/api/turnos/{{turnoB}}/posicion
+
+### Consultar posición de Carla
+GET {{baseUrl}}/api/turnos/{{turnoC}}/posicion
+
+### Consultar pendientes restantes
+GET {{baseUrl}}/api/turnos/pendientes
+
+### Asignar turno C a Carlos
+PUT {{baseUrl}}/api/turnos/{{turnoC}}/asignacion
+Content-Type: application/json
+
+{
+  "empleadoId": {{empleadoId}}
+}
+
+### Marcar turno C como atendido
+PATCH {{baseUrl}}/api/turnos/{{turnoC}}/estado
+Content-Type: application/json
+
+{
+  "estado": "Atendido"
+}
+
+### Comprobar fila vacía
+GET {{baseUrl}}/api/turnos/pendientes
+
+### Comprobar empleado disponible
+GET {{baseUrl}}/api/empleados/disponibles
