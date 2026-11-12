@@ -7,7 +7,7 @@
 *.user
 *.suo
 
-# Configuración privada
+# Configuración privada 
 **/appsettings.Local.json
 **/appsettings.*.Local.json
 
